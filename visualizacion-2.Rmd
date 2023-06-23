@@ -119,8 +119,8 @@ background-position: 100% 0%
 
 # Problema: los puntos se superponen
 
-* Tenemos, al menos, dos soluciones
-  + Usar transparencia
+* Tenemos, al menos, dos soluciones:
+  + Transparencia
   + Jitter
 
 .panelset[

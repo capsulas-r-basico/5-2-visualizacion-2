@@ -4,7 +4,7 @@
     <title>R and databases</title>
     <meta charset="utf-8" />
     <meta name="author" content="" />
-    <meta name="date" content="2023-06-23" />
+    <meta name="date" content="2023-06-28" />
     <script src="visualizacion-2_files/header-attrs-2.21/header-attrs.js"></script>
     <link href="visualizacion-2_files/panelset-0.2.6/panelset.css" rel="stylesheet" />
     <script src="visualizacion-2_files/panelset-0.2.6/panelset.js"></script>
@@ -84,6 +84,12 @@ background-position: 100% 0%
 ### Relación entre ingreso y esperanza de vida
 
 
+.panelset[
+
+.panel[.panel-name[logaritmo]
+
+
+
 ```r
 library(tidyverse)
 
@@ -96,8 +102,29 @@ ggplot(life_gdp, aes(x = lifeExp, y = log(gdpPercap)) ) +
 
 &lt;img src="visualizacion-2_files/figure-html/unnamed-chunk-3-1.png" style="display: block; margin: auto;" /&gt;
 
+]
 
-Aplicamos una transformación logarítmica sobre el PIB para obtener una mejor visualización
+
+.panel[.panel-name[sin logaritmo]
+
+
+
+```r
+library(tidyverse)
+
+life_gdp &lt;-  gapminder %&gt;% 
+  filter(year == 2007)
+
+ggplot(life_gdp, aes(x = lifeExp, y = gdpPercap) ) + 
+  geom_point()
+```
+
+&lt;img src="visualizacion-2_files/figure-html/unnamed-chunk-4-1.png" style="display: block; margin: auto;" /&gt;
+
+
+]
+
+]
 
 
 ---
@@ -137,7 +164,7 @@ background-size: contain;
 background-position: 100% 0%
 
 # Problema: los puntos se superponen
-
+    
 * Tenemos, al menos, dos soluciones:
   + Transparencia
   + Jitter
@@ -152,7 +179,7 @@ ggplot(life_gdp, aes(x = lifeExp, y = log(gdpPercap), color = continent, size = 
   scale_size(range = c(1, 5))
 ```
 
-&lt;img src="visualizacion-2_files/figure-html/unnamed-chunk-4-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="visualizacion-2_files/figure-html/unnamed-chunk-5-1.png" style="display: block; margin: auto;" /&gt;
 ]
 
 .panel[.panel-name[jitter]
@@ -164,7 +191,7 @@ ggplot(life_gdp, aes(x = lifeExp, y = log(gdpPercap), color = continent, size = 
   scale_size()
 ```
 
-&lt;img src="visualizacion-2_files/figure-html/unnamed-chunk-5-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="visualizacion-2_files/figure-html/unnamed-chunk-6-1.png" style="display: block; margin: auto;" /&gt;
 ]
 ]
 
@@ -185,7 +212,7 @@ ggplot(life_gdp, aes(x = lifeExp, y = log(gdpPercap), color = continent, size = 
 * facet_wrap(~continent)
 ```
 
-&lt;img src="visualizacion-2_files/figure-html/unnamed-chunk-6-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="visualizacion-2_files/figure-html/unnamed-chunk-7-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
 background-image: url("imagenes/fondo2.PNG")

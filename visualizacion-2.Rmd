@@ -73,6 +73,12 @@ background-position: 100% 0%
 
 ### Relación entre ingreso y esperanza de vida
 
+
+.panelset[
+
+.panel[.panel-name[logaritmo]
+
+
 ```{r, fig.width=7, fig.height=4}
 library(tidyverse)
 
@@ -83,8 +89,26 @@ ggplot(life_gdp, aes(x = lifeExp, y = log(gdpPercap)) ) +
   geom_point()
 ```
 
+]
 
-Aplicamos una transformación logarítmica sobre el PIB para obtener una mejor visualización
+
+.panel[.panel-name[sin logaritmo]
+
+
+```{r, fig.width=7, fig.height=4}
+library(tidyverse)
+
+life_gdp <-  gapminder %>% 
+  filter(year == 2007)
+
+ggplot(life_gdp, aes(x = lifeExp, y = gdpPercap) ) + 
+  geom_point()
+```
+
+
+]
+
+]
 
 
 ---
